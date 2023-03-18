@@ -27,6 +27,6 @@
   </ul>
 </div>
 
-<button type="button" class="btn btn-success"> <a href="{{route('posts.store')}}"style="text-decoration:none ; color:white;">update</button>
+<x-button type="primary" class="btn btn-success">update</x-button>
 </form>
 @endsection

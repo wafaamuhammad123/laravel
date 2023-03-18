@@ -25,8 +25,10 @@
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="#">Separated link</a></li>
   </ul>
+
 </div>
 
-<button type="button" class="btn btn-success" >  <a href="{{route('posts.store')}}"style="text-decoration:none ; color:white;">create</button>
+<x-button type="primary" class="Btn btn-success">create</x-button>
+
 </form>
 @endsection
