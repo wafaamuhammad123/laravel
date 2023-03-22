@@ -17,6 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" href="{{route('posts.index')}}">All Posts</a>
+                <!-- i used the shortcut to link bet pgs -->
             </div>
         </div>
     </div>
