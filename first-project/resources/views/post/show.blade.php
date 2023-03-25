@@ -11,6 +11,9 @@
             <h5 class="card-title">Title: {{$post['title']}}</h5>
             <p class="card-text">Description: {{$post['description']}}</p>
             <p class="card-text"> createdAt: {{$post->created_at->format('l jS \of F Y h:i:s A')}}  </p>
+            @if($post->img)
+                    <img src="{{ asset('storage/'.$post->img) }}" alt="{{ $post->title }}" class="img-fluid">
+            @endif
         </div>
     </div>
 
@@ -46,6 +49,7 @@
                 </div>
      </div>
                 <button style="margin-top:10px" class="btn btn-danger">Delete</button>
+
             </form>
             
       

@@ -3,7 +3,7 @@
 @section('title') Show @endsection
 
 @section('content')
-<form method="post" action="{{route('posts.update', $post->id)}}">
+<form method="post" action="{{route('posts.update', $post->id)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -21,6 +21,10 @@
             <input name="name" type="text" class="form-control" id="exampleFormControlInput1" value="{{$post->user->name}}" >
         </div>
         
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Image</label>
+            <input type="file" name="image" class="form-control" id="exampleFormControlTextarea1" rows="3">
+        </div>
 
 <x-button type="primary" class="btn btn-success">update</x-button>
 </form>
