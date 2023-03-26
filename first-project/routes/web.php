@@ -77,3 +77,28 @@ Route::get('/auth/callback', function () {
     dd($user);
     // $user->token
 });
+
+
+Route::get('/login/google', function () {
+    return Socialite::driver('google')->redirect();//takes me to the github pg to login there
+}) ->name('google.login');
+
+Route::get('/login/google/callback', function () {
+
+    $gmailUser = Socialite::driver('google')->user();//info github of the user
+   
+
+    $user = User::updateOrCreate([
+        'google_id' => $gmailUser->id,
+    ], [
+        'name' => $gmailUser->name,
+        'email' => $gmailUser->email,
+        'google_token' => $gmailUser->token,
+        'google_refresh_token' => $gmailUser->refreshToken,
+    ]);
+
+    Auth::login($googleUser);//as a user ur logged in nw in the system
+
+    dd($user);
+    // $user->token
+});

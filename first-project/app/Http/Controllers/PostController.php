@@ -21,7 +21,7 @@ class PostController extends Controller
         // $allPosts = Post::all();
 
         //To paginate
-        $allPosts = Post::paginate(3);
+        $allPosts = Post::with('user')->paginate(3);
 
         // $allPosts = User::get();
         // $allPosts = PaginateCollection::paginate($allPosts, 5);
