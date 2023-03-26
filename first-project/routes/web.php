@@ -50,3 +50,30 @@ Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.de
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+use Laravel\Socialite\Facades\Socialite;
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();//takes me to the github pg to login there
+});
+
+Route::get('/auth/callback', function () {
+
+    $githubUser = Socialite::driver('github')->user();//info github of the user
+    dd($githubUser);
+
+    $user = User::updateOrCreate([
+        'github_id' => $githubUser->id,
+    ], [
+        'name' => $githubUser->name,
+        'email' => $githubUser->email,
+        'github_token' => $githubUser->token,
+        'github_refresh_token' => $githubUser->refreshToken,
+    ]);
+
+    Auth::login($githubUser);//as a user ur logged in nw in the system
+
+    dd($user);
+    // $user->token
+});
